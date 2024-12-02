@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 
-# Define a function to check if a report is safe
 def is_safe(report):
     differences = [report[i+1] - report[i] for i in range(len(report)-1)]
-    if all(1 <= diff <= 3 for diff in differences):  # Check if levels are increasing gradually
+    if all(1 <= diff <= 3 for diff in differences):
         return True
-    if all(-3 <= diff <= -1 for diff in differences):  # Check if levels are decreasing gradually
+    if all(-3 <= diff <= -1 for diff in differences):
         return True
     return False
 
-# Define a function to check if removing one level can make the report safe
 def is_safe_with_dampener(report):
     for i in range(len(report)):
         modified_report = report[:i] + report[i+1:]  # Remove one level
